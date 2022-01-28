@@ -27,6 +27,7 @@ jobs:
           sed -i -e "s/version =.*/version = $RELEASE_VERSION/" app/default/app.conf
       - name: Create spl
         run: |
+          mv app ${APP_NAME}
           COPYFILE_DISABLE=1 tar -cvzf ${APP_NAME}.spl ${APP_NAME}
         env:
           APP_NAME: ${{ github.event.repository.name }}
